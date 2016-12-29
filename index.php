@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+//log in form handler-----------
+$login=$_POST['login'];
+if(!empty($login)){
+    $_SESSION['login']=$login;
+}
+//------------------------------
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,12 +18,13 @@ session_start();
     <body>
         <?php if (empty($_SESSION['login'])): ?>
         <form method="post">
-            <label>
+            <label>Login:
                 <input type="text" name="login"/>
             </label>
             <input type="submit" value="log in"/>
         </form>
         <?php else: ?>
+        <?= $_SESSION['login'] ?>
         <?php endif; ?>
     </body>
 </html>
